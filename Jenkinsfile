@@ -6,16 +6,24 @@ pipeline {
                 sh 'mvn --version'
             }
         }
-        stage('test'){
+        stage('deploy'){
             parallel {               
                     stage('deploy1') {
+                        input {
+                                message "Are you ready to deploy?"
+                                ok "yes please deploy"
+                        }
                         steps{
-                              sh 'echo deplo1'
+                              sh 'echo deploy1'
                         }
                     }                
-                stage('deploy2') {
-                    steps {
-                       sh 'echo deploy2'  
+                    stage('deploy2') {
+                         input {
+                                message "Are you ready to deploy?"
+                                ok "yes please deploy"
+                        }
+                        steps {
+                              sh 'echo deploy2'  
                     }
                 }
             }
