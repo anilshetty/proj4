@@ -6,5 +6,15 @@ pipeline {
                 sh 'mvn --version'
             }
         }
+        stage('test'){
+            parallel {               
+                    stage('deploy1') {
+                        sh 'echo deplo1'
+                    }                
+                stage('deploy2') {
+                    sh 'echo deploy2'                   
+                }
+            }
+        }
     }
 }
