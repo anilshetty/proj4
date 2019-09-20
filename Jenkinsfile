@@ -9,10 +9,14 @@ pipeline {
         stage('test'){
             parallel {               
                     stage('deploy1') {
-                        sh 'echo deplo1'
+                        steps{
+                              sh 'echo deplo1'
+                        }
                     }                
                 stage('deploy2') {
-                    sh 'echo deploy2'                   
+                    steps {
+                       sh 'echo deploy2'  
+                    }
                 }
             }
         }
