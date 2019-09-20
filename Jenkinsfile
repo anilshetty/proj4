@@ -7,21 +7,19 @@ pipeline {
             }
         }
         stage('deploy'){
-            parallel {               
-                    stage('deploy1') {
-                        input {
+            input {
                                 message "Are you ready to deploy?"
                                 ok "yes please deploy"
                         }
+            parallel {               
+                    stage('deploy1') {
+                        
                         steps{
                               sh 'echo deploy1'
                         }
                     }                
                     stage('deploy2') {
-                         input {
-                                message "Are you ready to deploy?"
-                                ok "yes please deploy"
-                        }
+                         
                         steps {
                               sh 'echo deploy2'  
                     }
